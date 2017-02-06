@@ -1,6 +1,11 @@
 # FriendFinder
 Web app that showcases Express
-Instructions
+
+HW Link: https://github.com/the-Coding-Boot-Camp-at-UT/10-16-Houston-Class-Content/blob/master/hou1010-MW-Class-Content/13-node-express-web-server/2-Homework/Instructions/homework_instructions.md
+
+Demo: https://friend-finder.herokuapp.com/survey
+
+### Instructions
 
 Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question.
 
