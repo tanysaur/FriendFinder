@@ -1,0 +1,34 @@
+{
+  "name": "friend-finder",
+  "version": "0.1.0",
+  "description": "App that matches you with your next BFF",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanysaur/FriendFinder.git"
+  },
+  "keywords": [
+    "friend",
+    "finder",
+    "bff"
+  ],
+  "author": "Ysa Tan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanysaur/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/tanysaur/FriendFinder#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "nodemon": "^1.11.0",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "path": "^0.12.7"
+  }
+}

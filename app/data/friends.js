@@ -1,64 +1,62 @@
-// Chosen CSS
-var config = {
-  '.chosen-select'           : {},
-  '.chosen-select-deselect'  : {allow_single_deselect:true},
-  '.chosen-select-no-single' : {disable_search_threshold:10},
-  '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-  '.chosen-select-width'     : {width:"95%"}
-}
-for (var selector in config) {
-  $(selector).chosen(config[selector]);
-}
+// Lists of friends to be compared with user
 
-// Capture the form inputs
-$("#submit").on("click", function(){
+var friendsList = [
+  {
+    "name": "Amy Pond",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/be/Amy_Pond_cropped.jpg",
+    "scores": [5,1,2,4,1,3,4,1,2,3]
+  },
+  {
+    "name": "Clara Oswald",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Clara_Oswald.jpg/400px-Clara_Oswald.jpg",
+    "scores":[4,1,3,4,2,3,5,1,2,1]
+  },
+  {
+    "name": "Rose Tyler",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/7/74/Rose_Tyler.jpg",
+    "scores":[4,2,1,1,0,3,4,3,4,2]
+  },
+  {
+    "name": "Rory Williams",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/4/43/RoryWilliams.jpg",
+    "scores":[1,3,2,1,3,4,3,0,2,2]
+  },
+  {
+    "name": "Donna Noble",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/d/dd/Donna_Noble.jpg",
+    "scores": [4,3,2,2,3,4,3,2,2,2]
+  },
+  {
+    "name": "Martha Jones",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/3/3b/Martha_Jones.jpg",
+    "scores":[3,3,3,4,4,2,4,2,0,2]
+  },
+  {
+    "name": "River Song",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/5/56/Riversong.jpg",
+    "scores":[1,3,5,2,1,5,2,3,2,1]
+  },
+  {
+    "name": "Sarah Jane Smith",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/0/0e/Sarah_Jane_Smith_2006.jpg",
+    "scores": [3,4,5,1,3,2,1,1,4,1]
+  },
+  {
+    "name": "Mickey Smith",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/b/b5/Mickey_Smith.jpg",
+    "scores": [1,1,3,4,4,1,2,4,5,1]
+  },
+  {
+    "name": "Jack Harkness",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/7/7d/Jack_Harkness.jpg",
+    "scores":[2,4,1,5,5,5,1,2,3,1]
+  },
+  {
+    "name": "The Doctor",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/8/8a/Eleventhdoctornew.jpg",
+    "scores": [5,5,5,5,5,5,5,5,5,5]
+  },
 
-  // Form validation
-  function validateForm() {
-  var isValid = true;
-  $('.form-control').each(function() {
-    if ( $(this).val() === '' )
-        isValid = false;
-  });
+];
 
-  $('.chosen-select').each(function() {
-
-    if( $(this).val() === "")
-      isValid = false
-  })
-  return isValid;
-}
-
-// If all required fields are filled
-if (validateForm() == true)
-{
-  // Create an object for the user's data
-    var userData = {
-      name: $("#name").val(),
-      photo: $("#photo").val(),
-      scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
-    }
-
-
-    // Grab the URL of the website
-    var currentURL = window.location.origin;
-
-    // AJAX post the data to the friends API.
-    $.post(currentURL + "/api/friends", userData, function(data){
-
-      // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-      $("#matchName").text(data.name);
-      $('#matchImg').attr("src", data.photo);
-
-      // Show the modal with the best match
-      $("#resultsModal").modal('toggle');
-
-    });
-}
-else
-{
-  alert("Please fill out all fields before submitting!");
-}
-
-  return false;
-});
+module.exports = friendsList;
