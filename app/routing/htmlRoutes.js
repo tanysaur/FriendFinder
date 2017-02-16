@@ -6,8 +6,6 @@
 // =============================================================
 
 var path = require("path");
-var express = require("express");
-var app = express();
 
 // Routes
 // =============================================================
@@ -15,7 +13,7 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
   app.get("/", function(req, res){
-    console.log('This is HOME')
+    console.log('This is / (home)')
     res.sendFile(path.join(__dirname + "/../public/home.html"));
   })
   // index route loads survey.html
@@ -24,4 +22,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname + "/../public/survey.html"));
   });
 
+
+  // app.use(function(req, res) {
+  //   res.sendFile(path.join(__dirname, "/../public/home.html"));
+  // });
 };
